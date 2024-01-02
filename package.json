@@ -7,10 +7,10 @@
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",  
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2", 
-    "uuid": "^9.0.1"      
+    "express": "^4.18.2",
+    "uuid": "^9.0.1"
   }
 }
