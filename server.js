@@ -53,7 +53,7 @@ app.post('/api/notes', (req, res) => {
 });
 
 // API Route to delete a note by id. Readfile reads the existing notes, then removes the note the user selects and updates that to the db.json. 
-app.delete('dapi/notes/:id', (req, res) => {
+app.delete('api/notes/:id', (req, res) => {
   const noteId = req.params.id;
 
   fs.readFile('develop/db/db.json', 'utf8', (err, data) => {
