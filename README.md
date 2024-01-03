@@ -17,4 +17,5 @@ Existing notes will be saved in the left column, these can also be deleted by cl
 ![SS 2](<Note app 2.png>)
 ![SS 3](<Note app 3.png>)
 
-Live server link - 
+Live server link - https://beck-note-taking-app.onrender.com
+ 
