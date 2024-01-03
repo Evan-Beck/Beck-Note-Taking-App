@@ -11,7 +11,7 @@ app.use(express.json());
 
 // Serves as the main index.html file, line 18 is the main notes.html file. The res.sendFile(path) sends specific files to the user, like the loading page or saved notes. 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Develop/public/index.html'));
+  res.sendFile(path.join(__dirname, '/Develop/public/index.html'));
 });
 
 
