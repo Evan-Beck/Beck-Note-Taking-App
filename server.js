@@ -6,22 +6,22 @@ const { v4: uuidv4 } = require('uuid'); // For unique identifiers - the idv4 is 
 const app = express();
 
 // Middlewares - line 9 serves static files from develop/public directory and 10 will automatically parse those requests as JSON.
-app.use(express.static(path.join(__dirname, 'develop/public'))); 
+app.use(express.static(path.join(__dirname, 'Develop/public'))); 
 app.use(express.json()); 
 
 // Serves as the main index.html file, line 18 is the main notes.html file. The res.sendFile(path) sends specific files to the user, like the loading page or saved notes. 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'develop/public/index.html'));
+  res.sendFile(path.join(__dirname, 'Develop/public/index.html'));
 });
 
 
 app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, 'develop/public/notes.html'));
+  res.sendFile(path.join(__dirname, 'Develop/public/notes.html'));
 });
 
 // API Route to get all notes (READ). The readfile generates a 500 error in the console if files cannot be read. If the route is successful, then the data will be parsed as a JSON string and sent as a response. 
 app.get('/api/notes', (req, res) => {
-  fs.readFile('develop/db/db.json', 'utf8', (err, data) => {
+  fs.readFile('Develop/db/db.json', 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       return res.status(500).send('Error reading notes');
@@ -34,7 +34,7 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res) => {
   const newNote = { ...req.body, id: uuidv4() };
 
-  fs.readFile('develop/db/db.json', 'utf8', (err, data) => {
+  fs.readFile('Develop/db/db.json', 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       return res.status(500).send('Error reading notes');
@@ -42,7 +42,7 @@ app.post('/api/notes', (req, res) => {
     const notes = JSON.parse(data);
     notes.push(newNote);
 
-    fs.writeFile('develop/db/db.json', JSON.stringify(notes), (err) => {
+    fs.writeFile('Develop/db/db.json', JSON.stringify(notes), (err) => {
       if (err) {
         console.error(err);
         return res.status(500).send('Error saving note');
@@ -56,7 +56,7 @@ app.post('/api/notes', (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
   const noteId = req.params.id;
 
-  fs.readFile('develop/db/db.json', 'utf8', (err, data) => {
+  fs.readFile('Develop/db/db.json', 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       return res.status(500).send('Error reading notes');
@@ -65,7 +65,7 @@ app.delete('/api/notes/:id', (req, res) => {
     let notes = JSON.parse(data);
     notes = notes.filter(note => note.id !== noteId);
 
-    fs.writeFile('develop/db/db.json', JSON.stringify(notes), (err) => {
+    fs.writeFile('Develop/db/db.json', JSON.stringify(notes), (err) => {
       if (err) {
         console.error(err);
         return res.status(500).send('Error saving notes');
